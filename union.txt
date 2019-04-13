@@ -1,0 +1,23 @@
+关于union
+
+union中的元素共享存储空间
+
+typedef union {
+  int element;
+  char arr[2];
+}A;
+
+假如 A  a;
+    a.arr[0]=10;
+	a.arr[1]=1;
+	printf("%d",a.element);
+
+arr[0]中的10在存储时候为  0A
+arr[1]中的1在存储时为  01
+
+因此 在a中实际存储为  0A 01 00 00     其中左端是低位
+
+但读取时是按照由高到低的顺序，因此 00 00 01 0A   100001010==266
+
+ 
+
